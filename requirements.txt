@@ -1,7 +1,9 @@
 Django==1.9.2
 django-autoslug==1.9.3
 django-crispy-forms==1.6.0
+django-debug-toolbar==1.4
 django-markdown==0.8.4
 django-registration-redux==1.4
 Markdown==2.6.5
+sqlparse==0.1.18
 wheel==0.29.0
