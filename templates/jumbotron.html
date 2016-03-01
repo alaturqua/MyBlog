@@ -7,7 +7,11 @@
         <p>You can write your memories, stories and wishes into this blog.</p>
         <p>Start writing</p>
         <p>
+        {% if not user.is_authenticated %}
           <a class="btn btn-lg btn-primary" href="accounts/register/" role="button">Join Us&raquo;</a>
+        {% else %}
+          <a class="btn btn-lg btn-primary" href="add/"role="button">Create your first Post&raquo;</a>
+        {% endif %}
         </p>
       </div>
       <div class=" col-md-6 col-sm-6 col-xs-12">

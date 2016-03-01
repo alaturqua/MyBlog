@@ -1,10 +1,7 @@
-from django.views import generic
 from . import models
-from django.shortcuts import redirect, render, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.utils import timezone
+from django.shortcuts import render, get_object_or_404
 from .forms import BlogEntryForm
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 

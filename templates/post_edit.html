@@ -5,6 +5,7 @@
 
       {% endblock jumbotron %}
 {% block content %}
+    {% if user.is_authenticated %}
 	<div class='row'>
 	<div class='col-sm-8 col-sm-offset-2'>
     <h1>New Blog Entry</h1>
@@ -14,6 +15,12 @@
             <button type="submit" class="btn btn-primary btn-primary">Save</button>
         </div>
     </form>
+    {% else %}
+      <p class='lead text-align-center'>You are not registered yet!<br>
+      Please</p>
+      <h1 class="text-align-center"><a href="{% url 'registration_register' %}">Register</a></h1>
+      <p class='lead text-align-center'> yourself!</p>
     </div>
     </div>
+    {% endif %}
 {% endblock %}

@@ -25,7 +25,7 @@ SECRET_KEY = 'qgdrcf5lqfg9k&w3k=^mgz40ao4^0z4dc)5644i^m*d7ycb5^g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['alaturqua.pythonanywhere.com',]
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'yourgmail@gmail.com'
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_markdown',
     'registration',
-    'debug_toolbar',
+    #'debug_toolbar',
     #my apps
     'newsletter',
     'blog',
@@ -140,14 +140,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "static_root")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_root")
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_in_pro", "our_static"),
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "media_root")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_root")
 
 
 #Crispy Settings
