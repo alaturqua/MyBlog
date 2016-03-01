@@ -24,9 +24,10 @@ from trydjango18 import views as try_views
 
 urlpatterns = [
 
-    url(r'^$', blog_views.BlogIndex.as_view(), name='home'),
-    url(r'^entry/detail/(?P<slug>\S+)$', blog_views.BlogDetail.as_view(), name="entry_detail"),
-    url(r'^entry/create/$',blog_views.BlogCreate, name='blog_create'),
+    url(r'^$', blog_views.BlogIndex, name='home'),
+    url(r'^add/$',blog_views.BlogCreate, name='blog_create'),
+    url(r'^(?P<id>\d+)$', blog_views.BlogDetail, name="entry_detail"),
+    url(r'^(?P<id>\d+)/edit/$',blog_views.BlogUpdate, name='blog_edit'),
     url(r'^feed/$', feed.LatestPosts(), name='feed'),
     url(r'^newsletter/$', news_views.home, name='newsletter'),
 	url(r'^contact/$', news_views.contact, name='contact'),

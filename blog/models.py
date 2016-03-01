@@ -2,14 +2,8 @@ from django.db import models
 from django_markdown.models import MarkdownField
 from django.core.urlresolvers import reverse
 from django.utils import timezone
-from autoslug import AutoSlugField
 
 # Create your models here.
-
-class EntryQuerySet(models.QuerySet):
-    def published(self):
-        return self.filter(publish=True)
-
 
 class Entry(models.Model):
 	author = models.ForeignKey('auth.User')
@@ -17,14 +11,11 @@ class Entry(models.Model):
 	body = MarkdownField()
 	image = models.FileField(null=True, blank=True)
 	publish = models.BooleanField(default=True)
-	created = models.DateTimeField(auto_now_add=True)
-	modified = models.DateTimeField(auto_now=True)
-	slug = AutoSlugField(populate_from="title", unique_with='publish')
-
-	objects = EntryQuerySet.as_manager()
+	created = models.DateTimeField(auto_now_add=True, auto_now=False)
+	modified = models.DateTimeField(auto_now_add=False, auto_now=True)
 
 	def get_absolute_url(self):
-		return reverse("entry_detail", kwargs={"slug": self.slug})
+		return reverse("entry_detail", kwargs={"id": self.id})
 
 
 	def __str__(self):

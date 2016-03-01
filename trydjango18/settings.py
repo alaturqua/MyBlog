@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_markdown',
     'registration',
+    'debug_toolbar',
     #my apps
     'newsletter',
     'blog',

@@ -23,17 +23,18 @@
 	<div class='row'>
 	</div>
 	{% for object in object_list %}
-	<div class='row'>
+	<div class='row' style="border:1px dashed black;border-radius:5px; margin:5px;">
 	<div class='col-sm-8 col-sm-offset-2'>
 	<br>
-	<h2><a href="{% url "entry_detail" slug=object.slug %}">{{ object.title }}</a></h2>
-	<small>{{object.created|timesince}}</small>
-	<small>{{ author__name}}</small>
+	<h2><a href="{% url 'entry_detail' id=object.id %}">{{ object.title }}</a></h2>
+	<small>{{object.created|timesince}} ago</small> |
+	<small>Author: {{ object.author}}</small>
 		{% if object.image %}
 			<img src='{{ object.image.url }}' class='img-responsive blog-picture' />
 		{% endif %}
 	<p> {{ object.body}}</p>
 	<hr>
+	<div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="1"></div>
 	</div>
 	</div>
 	{% endfor %}

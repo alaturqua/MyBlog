@@ -9,14 +9,24 @@
       {% endblock jumbotron %}
  {% block content %}
 
-<div class="row">
-<div class="col-sm-8 col-sm-offset-2">
-  <h2><a href="{% url "entry_detail" slug=object.slug %}">{{ object.title }}</a></h2>
-  <p class="meta">{{ object.created }}</p>
-  {% if object.image %}
-            <img src='{{ object.image.url }}' class='img-responsive blog-picture' />
-            {% endif %}
-  </p>
-  <p>{{ object.body|markdown }}</p>
+	<div class="row" style="border:1px dashed black;border-radius: 5px;margin:5px;">
+	<div class="col-sm-8 col-sm-offset-2" >
+
+	  <h2><a href="{{ instance.get_absolute.url }}">{{ instance.title }}</a></h2>
+	  <p class="meta">{{ instance.created|timesince }} ago</p>
+	  {% include "sharelinks.html" %}
+
+	  
+	  {% if instance.image %}
+	            <img src='{{ instance.image.url }}' class='img-responsive blog-picture' />
+	  {% endif %}
+	  </p>
+	  <p>{{ instance.body|markdown }}</p>
+	  <a class="btn btn-primary btn-primary pull-right" href="{% url 'blog_edit' id=instance.id %}"><span class="glyphicon glyphicon-pencil"></span></a><br><br>
+	  <hr>
+	  <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="3"></div>
+
+	  </div>
+	  </div>
 
  {% endblock content %}
