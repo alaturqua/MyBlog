@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Welcome | {{ block.super}}{% endblock head_title%}
+      {% block jumbotron %}
+
+      {% endblock jumbotron %}
+ {% block content %}
+
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+  <h2><a href="{% url "entry_detail" slug=object.slug %}">{{ object.title }}</a></h2>
+  <p class="meta">{{ object.created }}</p>
+  {% if object.image %}
+            <img src='{{ object.image.url }}' class='img-responsive blog-picture' />
+            {% endif %}
+  </p>
+  <p>{{ object.body|markdown }}</p>
+
+ {% endblock content %}

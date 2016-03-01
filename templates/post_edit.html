@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load django_markdown %}
+      {% block jumbotron %}
+
+      {% endblock jumbotron %}
+{% block content %}
+	<div class='row'>
+	<div class='col-sm-8 col-sm-offset-2'>
+    <h1>New Blog Entry</h1>
+    <form method="POST" action='' enctype='multipart/form-data'>{% csrf_token %}
+        {{ form|crispy}}
+        <div class="save-button">
+            <button type="submit" class="btn btn-primary btn-primary">Save</button>
+        </div>
+    </form>
+    </div>
+    </div>
+{% endblock %}

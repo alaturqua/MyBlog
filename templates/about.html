@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+      {% block jumbotron %}
+        
+      {% endblock jumbotron %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>Meet The Team</h2>
+        <p class="lead">The Wonderful People Behind the Site</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <div class="text-center"><img class="img-circle centered" src="https://www.xing.com/profile/Isa_Inalcik/picture/old" alt="profile pic"></div>
+        <p class="heavy text-center">Isa Inalcik</p>
+        <h2 class="text-center">CEO <br> Front and Backend Developer</h2>
+        <p class="text-center">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+      </div>
+    </div>
+
+{% endblock content %}

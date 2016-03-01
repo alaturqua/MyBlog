@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load django_markdown %}
+
+
+
+{% block head_title %}Welcome | {{ block.super}}{% endblock head_title%}
+
+<style>
+{% block style %}
+
+
+{% endblock style %}
+</style>
+
+{% block jumbotron %}
+{{ block.super}}
+{% endblock jumbotron %}
+
+{% block content %}
+
+	<div class='row'>
+	</div>
+	{% for object in object_list %}
+	<div class='row'>
+	<div class='col-sm-8 col-sm-offset-2'>
+	<br>
+	<h2><a href="{% url "entry_detail" slug=object.slug %}">{{ object.title }}</a></h2>
+	<small>{{object.created|timesince}}</small>
+	<small>{{ author__name}}</small>
+		{% if object.image %}
+			<img src='{{ object.image.url }}' class='img-responsive blog-picture' />
+		{% endif %}
+	<p> {{ object.body}}</p>
+	<hr>
+	</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock content %}
