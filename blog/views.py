@@ -24,6 +24,7 @@ def BlogDetail(request, id):
 	}
 	return render(request, "post.html", context)
 
+
 def BlogCreate(request):
 	form = BlogEntryForm(request.POST or None, request.FILES or None)
 	if form.is_valid():
@@ -34,6 +35,7 @@ def BlogCreate(request):
 		'form':form,
 	}
 	return render(request,"post_edit.html", context)
+
 
 def BlogUpdate(request, id=None):
 	instance = get_object_or_404(models.Entry, id=id)

@@ -30,14 +30,13 @@ urlpatterns = [
     url(r'^(?P<id>\d+)/edit/$',blog_views.BlogUpdate, name='blog_edit'),
     url(r'^feed/$', feed.LatestPosts(), name='feed'),
     url(r'^newsletter/$', news_views.home, name='newsletter'),
-	url(r'^contact/$', news_views.contact, name='contact'),
+    url(r'^contact/$', news_views.contact, name='contact'),
     url(r'^about/$', try_views.about, name='about'),
     url(r'^markdown/', include("django_markdown.urls")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include("registration.backends.default.urls")),
 
 ]
-
 
 
 if settings.DEBUG:

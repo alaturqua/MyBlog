@@ -1,7 +1,7 @@
 from django.db import models
 from django_markdown.models import MarkdownField
 from django.core.urlresolvers import reverse
-from django.utils import timezone
+
 
 # Create your models here.
 
@@ -17,9 +17,8 @@ class Entry(models.Model):
 	def get_absolute_url(self):
 		return reverse("entry_detail", kwargs={"id": self.id})
 
-
 	def __str__(self):
-	    return self.title
+		return self.title
 
 	class Meta:
 		verbose_name = "Blog Entry"
