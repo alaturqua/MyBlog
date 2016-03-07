@@ -1,6 +1,7 @@
 from django.db import models
 from django_markdown.models import MarkdownField
 from django.core.urlresolvers import reverse
+from embed_video.fields import EmbedVideoField
 
 
 # Create your models here.
@@ -9,6 +10,7 @@ class Entry(models.Model):
 	author = models.ForeignKey('auth.User')
 	title = models.CharField(max_length=200)
 	body = MarkdownField()
+	video = EmbedVideoField(null=True, blank=True)
 	image = models.FileField(null=True, blank=True)
 	publish = models.BooleanField(default=True)
 	created = models.DateTimeField(auto_now_add=True, auto_now=False)

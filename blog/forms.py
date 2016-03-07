@@ -9,5 +9,6 @@ class BlogEntryForm(forms.ModelForm):
 			'author',
 			'title',
 			'body',
+			'video',
 			'image',
 		]

@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% load django_markdown %}
+{% load embed_video_tags %}
 
 
 
@@ -20,23 +21,27 @@
 
 {% block content %}
 
-	<div class='row'>
-	</div>
+
 	{% for object in object_list %}
-	<div class='row' style="border:1px dashed black;border-radius:5px; margin:5px;">
-	<div class='col-sm-8 col-sm-offset-2'>
-	<br>
-	<h2><a href="{% url 'entry_detail' id=object.id %}">{{ object.title }}</a></h2>
+	 <div class="row">
+	 <a href='{% url 'entry_detail' id=object.id %}'>
+     <div class="col-xs-6 col-lg-4">
+    <h2><a href="{% url 'entry_detail' id=object.id %}">{{ object.title }}</a></h2>
 	<small>{{object.created|timesince}} ago</small> |
 	<small>Author: {{ object.author}}</small>
 		{% if object.image %}
 			<img src='{{ object.image.url }}' class='img-responsive blog-picture' />
 		{% endif %}
-	<p> {{ object.body}}</p>
-	<hr>
-	<div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="1"></div>
-	</div>
-	</div>
+        <div class="elastic-video" style="margin:20px;">
+        {% if object.video %}
+        {% video object.video as my_video %}
+            {% video my_video '60% x 100%' %}
+        {% endvideo %}
+        {% endif %}
+         </div>
+	<p> {{ object.body|truncatewords_html:30}}</p>
+	<p><a class="btn btn-primary" href="{% url 'entry_detail' id=object.id %}" role="button">View details &raquo;</a></p></a>
+            </div><!--/span-->
 	{% endfor %}
 </div>
 {% endblock content %}
